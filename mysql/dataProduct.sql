@@ -79,7 +79,8 @@ SELECT  id, name, importprice, price FROM product p WHERE p.quantity > 60;
 
 -- 1.4. Lấy 3 sản phẩm mới nhất vừa được thêm vào Hệ thống
 SELECT * FROM product p
-LIMIT 3, 3;
+ORDER BY p.id DESC
+LIMIT 3;
 
 -- 1.5. Lấy sản phẩm mà tên sản phẩm có chứa chữ 'Samsung'
 SELECT * FROM product p WHERE p.name LIKE '%samsung%';

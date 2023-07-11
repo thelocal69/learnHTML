@@ -102,6 +102,6 @@ JOIN supplier s ON p.supplier_id = s.id
 JOIN category c ON p.category_id = c.id WHERE p.price > 5000000;
 
 -- 2.3. Lấy tất cả sản phẩm là máy tính bảng (tablet)
-SELECT *, c.name FROM product p
+SELECT * FROM product p
 JOIN category c ON p.category_id = c.id
 WHERE c.name LIKE '%tablet%';

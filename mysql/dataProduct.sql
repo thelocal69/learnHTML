@@ -92,15 +92,16 @@ SELECT * FROM product p WHERE p.price > 7000000 AND p.name LIKE '%macbook%';
 SELECT name FROM product p WHERE p.price >= 8000000 AND p.price <= 10000000;
 
 -- 2.1. Lấy mã sản phẩm, tên sản phẩm, giá nhập, giá niêm yết (giá bán), số lượng, tên nhà cung cấp của tất cả sản phẩm
-SELECT p.id, p.name, importprice, price, quantity, s.name FROM product p JOIN supplier s ON s.id = p.supplier_id;
+SELECT p.id, p.name, importprice, price, quantity, s.name FROM product p JOIN supplier s ON p.supplier_id = s.id;
 
 -- 2.2. Lấy mã sản phẩm, tên sản phẩm, giá nhập, giá niêm yết (giá bán), số lượng, mã nhà cung cấp, tên nhà cung cấp, mã loại sản phẩm,
 -- tên loại sản phẩm của những sản phẩm có giá lớn hơn 5.000.000.
 SELECT p.id, p.name, importprice, price, quantity, s.id, s.name, c.id, c.name
 FROM product p
-JOIN supplier s ON s.id = p.supplier_id
-JOIN category c ON c.id = p.category_id WHERE p.price > 5000000;
+JOIN supplier s ON p.supplier_id = s.id
+JOIN category c ON p.category_id = c.id WHERE p.price > 5000000;
 
 -- 2.3. Lấy tất cả sản phẩm là máy tính bảng (tablet)
-SELECT * FROM product p
-JOIN category c ON c.id = p.category_id WHERE p.category_id = 4;
+SELECT *, c.name FROM product p
+JOIN category c ON p.category_id = c.id
+WHERE c.name LIKE '%tablet%';
